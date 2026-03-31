@@ -12,7 +12,7 @@ public class VendaTest {
 
         float total = venda.calcularTotal();      // desconto de 10% aplicado ao pagamento em dinheiro
 
-        System.out.println(total);
+        System.out.println("Dinheiro: " + total);
         
         assertEquals(90, venda.calcularTotal(), 0.01);
     }
@@ -22,6 +22,10 @@ public class VendaTest {
         Venda venda = new VendaPadaria(100);
         venda.setTipoPagamento(new PagamentoCartao());  // sem desconto ao realizar o pagamento no cartao
 
+        float total = venda.calcularTotal();
+        System.out.println("Cartão: " + total);
+
+
         assertEquals(100, venda.calcularTotal(), 0.01);
     }
 
@@ -29,6 +33,10 @@ public class VendaTest {
     public void deveRetornarZeroQuandoValorZero() {
         Venda venda = new VendaPadaria(0);
         venda.setTipoPagamento(new PagamentoCartao());
+
+        float total = venda.calcularTotal();
+
+        System.out.println(total);
 
         assertEquals(0, venda.calcularTotal(), 0.01);
 }
